@@ -1,0 +1,25 @@
+# Python / MicroPython
+__pycache__/
+*.py[cod]
+*.mpy
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local environment files
+.env
+.env.*
+
+# MicroPython firmware / device artifacts
+*.uf2
+*.bin
+*.elf
+*.map
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.swp
+

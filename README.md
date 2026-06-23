@@ -14,9 +14,9 @@
               < pocket void pet >
 ```
 
-a tiny virtual pet for the raspberry pi pico w.
+a tiny virtual pet for the raspberry pi pico w with an st7735 display.
 
-micropython first. display and buttons after the board is alive.
+micropython first. display bring-up now. buttons and pet state next.
 
 ## stack
 
@@ -63,22 +63,35 @@ cmd+shift+p -> MicroPico: Configure project
 cmd+shift+p -> MicroPico: Upload project to Pico
 ```
 
-## hello board
+## display smoke test
 
-`main.py`
+`main.py` initializes the ST7735 over SPI0, sets the display window to 128x128,
+and then runs this smoke-test loop:
 
 ```py
-from machine import Pin
-import time
-
-led = Pin("LED", Pin.OUT)
-
 while True:
-    led.toggle()
-    time.sleep(0.5)
+    fill_screen(0xF800)
+    time.sleep(1)
+    fill_screen(0x07E0)
+    time.sleep(1)
+    fill_screen(0x001F)
+    time.sleep(1)
 ```
 
-the onboard led blinking means the board, firmware, cable, and editor path are good.
+the display cycling red, green, and blue means the pico, micropython firmware, spi wiring, and st7735 initialization path are good.
+
+## display wiring
+
+```txt
+st7735     -> pico w
+SCK/SCL    -> GP18
+SDA/MOSI   -> GP19
+CS         -> GP17
+RST/RES    -> GP20
+DC/A0      -> GP21
+VCC        -> 3V3
+GND        -> GND
+```
 
 ## project shape
 
@@ -86,14 +99,15 @@ the onboard led blinking means the board, firmware, cable, and editor path are g
 .
 ├─ .vscode/
 │  └─ settings.json
+├─ CHANGELOG.md
 ├─ .gitignore
+├─ main.py
 └─ README.md
 ```
 
 expected later:
 
 ```txt
-main.py       -> pico entrypoint
 lib/          -> display, input, and pet state modules
 tools/        -> local helper scripts, if needed
 ```
@@ -102,11 +116,17 @@ tools/        -> local helper scripts, if needed
 
 ```txt
 now
+├─ st7735 display
 ├─ raspberry pi pico w
+├─ breadboard/jumper wires
 └─ micro usb cable
 
 later
-├─ display
-├─ breadboard
 └─ buttons
 ```
+
+## documentation
+
+- [getting started with Raspberry Pi Pico](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico)
+- [thonny](https://thonny.org/)
+- [picozero](https://picozero.readthedocs.io/en/latest/)

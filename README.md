@@ -72,8 +72,8 @@ Thonny without uploading extra modules. It initializes the ST7735 over SPI0,
 fills the display black, and renders:
 
 ```txt
-AngelaMon
-Hello World
+angi lila
+hello world
 ```
 
 The earlier red, green, and blue smoke test confirmed the pico, micropython

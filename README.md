@@ -24,8 +24,7 @@ micropython first. display bring-up now. buttons and pet state next.
 board       -> raspberry pi pico w
 runtime     -> micropython
 language    -> python
-editor      -> vscode
-extension   -> micropico
+editor      -> thonny
 env         -> local python venv for tools only
 ```
 
@@ -41,7 +40,9 @@ there are no required python packages yet. the venv is here for later tooling, s
 
 ## pico setup
 
-install the `micropico` vscode extension.
+install Thonny:
+
+- https://thonny.org/
 
 download the pico w micropython firmware:
 
@@ -56,29 +57,27 @@ copy the .uf2 file to RPI-RP2
 wait for the drive to disappear
 ```
 
-upload code from vscode:
+upload code from Thonny:
 
 ```txt
-cmd+shift+p -> MicroPico: Configure project
-cmd+shift+p -> MicroPico: Upload project to Pico
+open main.py
+save to Raspberry Pi Pico as main.py
+run main.py
 ```
 
-## display smoke test
+## display text test
 
-`main.py` initializes the ST7735 over SPI0, sets the display window to 128x128,
-and then runs this smoke-test loop:
+`main.py` is currently standalone so it can be saved to the Pico and run from
+Thonny without uploading extra modules. It initializes the ST7735 over SPI0,
+fills the display black, and renders:
 
-```py
-while True:
-    fill_screen(0xF800)
-    time.sleep(1)
-    fill_screen(0x07E0)
-    time.sleep(1)
-    fill_screen(0x001F)
-    time.sleep(1)
+```txt
+angi lila
+hello world
 ```
 
-the display cycling red, green, and blue means the pico, micropython firmware, spi wiring, and st7735 initialization path are good.
+The earlier red, green, and blue smoke test confirmed the pico, micropython
+firmware, spi wiring, and st7735 initialization path are good.
 
 ## display wiring
 
@@ -130,3 +129,4 @@ later
 - [getting started with Raspberry Pi Pico](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico)
 - [thonny](https://thonny.org/)
 - [picozero](https://picozero.readthedocs.io/en/latest/)
+- [Beginners Guide to SPI on the Raspberry Pi Pico](https://www.youtube.com/watch?v=s7Lud1Gqrqw)

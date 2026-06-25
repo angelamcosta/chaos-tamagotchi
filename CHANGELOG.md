@@ -2,6 +2,10 @@
 
 project changes, newest first.
 
+## 2026-06-24
+
+- render text on ST7735 display
+
 ## 2026-06-23
 
 - initialize st7735 display over spi0 on the raspberry pi pico w

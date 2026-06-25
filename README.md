@@ -129,3 +129,4 @@ later
 - [getting started with Raspberry Pi Pico](https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico)
 - [thonny](https://thonny.org/)
 - [picozero](https://picozero.readthedocs.io/en/latest/)
+- [Beginners Guide to SPI on the Raspberry Pi Pico](https://www.youtube.com/watch?v=s7Lud1Gqrqw)
